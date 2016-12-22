@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-4.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+    ">
+    <!--配置数据源  -->
+    <!-- properties的方式 -->
+    <context:property-placeholder location="classpath:jdbc_c3p0_m.properties"/>
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+    	<!--主要的部分  -->
+    	<property name="user" value="${jdbc.user}"></property>
+    	<property name="password" value="${jdbc.password}"></property>
+    	<property name="driverClass" value="${jdbc.driverClass}"></property>
+    	<property name="jdbcUrl" value="${jdbc.Url}"></property>
+    	<!--c3p0中对资源池的配置 -->
+    	<property name="description" value="DataSource for wocloud.cn Core Service" />
+    	<property name="minPoolSize" value="${c3p0.minPoolSize}" />
+    	<property name="maxPoolSize" value="${c3p0.maxPoolSize}" />
+    	<property name="initialPoolSize" value="${c3p0.initialPoolSize}" />
+    	<property name="maxIdleTime" value="${c3p0.maxIdleTime}" />
+    	<property name="idleConnectionTestPeriod" value="${c3p0.idleConnectionTestPeriod}" />
+    	<property name="automaticTestTable" value="${c3p0.automaticTestTable}" />
+    	<property name="maxStatements" value="${c3p0.maxStatements}" />
+    	<property name="testConnectionOnCheckin" value="${c3p0.testConnectionOnCheckin}" />
+    </bean>
+  	<context:component-scan base-package="cn.hjycjc.spring.spring_mybatis.dao"></context:component-scan>
+</beans>

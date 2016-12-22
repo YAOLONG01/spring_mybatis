@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+ <mapper namespace="cn.hjycjc.spring.spring_mybatis.dao">
+ 	<select id="getUser" parameterType="java.lang.Integer" resultType="cn.hjycjc.spring.spring_mybatis.entity.User">
+ 		SELECT * FROM users WHERE id=#{id};
+ 	</select>
+ 	<insert id="insertUser" parameterType="cn.hjycjc.spring.spring_mybatis.entity.User" >
+ 		INSERT INTO users (name,age) values(#{name},#{age});
+ 	</insert>
+ 	<update id="updateUser" parameterType="cn.hjycjc.spring.spring_mybatis.entity.User">
+ 		UPDATE users SET name=#{name},age=#{age} WHERE id=#{id} ;
+ 	</update>
+ 	
+ 	<delete id="deleteUser" parameterType="java.lang.Integer">
+ 		DELETE FROM users WHERE id=#{id}; 
+ 	</delete>
+ </mapper>
+ 
