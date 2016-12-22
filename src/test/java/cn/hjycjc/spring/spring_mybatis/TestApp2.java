@@ -1,6 +1,7 @@
 package cn.hjycjc.spring.spring_mybatis;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -53,5 +54,19 @@ public class TestApp2 {
 		parameter.setAge(19);
 		parameter.setId(5);
 		System.out.println(sqlSession.delete(statement, parameter));
+	}
+	
+	@Test
+	public void testGetAll() throws IOException{
+		
+		SqlSession sqlSession =mybatisUtil.getSqlSession();
+		String statement ="cn.hjycjc.spring.spring_mybatis.dao"+".getAll";
+		
+		List<User> users=sqlSession.selectList(statement);
+		
+		System.out.println(users);
+		for(User user: users){
+			System.out.println(user);
+		}
 	}
 }

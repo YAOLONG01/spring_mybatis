@@ -15,5 +15,9 @@
  	<delete id="deleteUser" parameterType="java.lang.Integer">
  		DELETE FROM users WHERE id=#{id}; 
  	</delete>
+ 	
+ 	<select id="getAll" resultType="cn.hjycjc.spring.spring_mybatis.entity.User">
+ 		SELECT * FROM users;
+ 	</select>
  </mapper>
  
