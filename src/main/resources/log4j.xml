@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  <!-- 标准控制台输出 -->
+  <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+    <param name="Target" value="System.out" />
+    <!-- 关闭向catalina.out中输出日志, 避免该日志文件无限增长, 调试时可以将此选项调整为DEBUG 
+    <param name="Threshold" value="OFF" />-->
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %r %-5p [%F:%L] : %m%n" />
+    </layout>
+  </appender>
+
+  <!-- 服务器主日志文件 -->
+  
+  <!-- <appender name="subserver" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="Threshold" value="info" />
+    The active file to log to
+    <param name="file" value="${catalina.home}/logs/oss.log" />
+    <param name="Append" value="false" />设置是否在重新启动服务时，在原有日志的基础添加新日志
+    <param name="append" value="true" />
+    <param name="encoding" value="UTF-8" />
+    <layout class="org.apache.log4j.PatternLayout">
+      The log message pattern
+      <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %r %-5p [%F:%L] : %m%n" />
+    </layout>
+  </appender> -->
+ 
+  <!-- 公共组件日志 -->
+  <!-- <logger name="org.springframework" additivity="true">
+    <level value="info" />
+    <appender-ref ref="stdout" />
+    <appender-ref ref="server.rolling.file" />
+  </logger>
+  <logger name="org.apache" additivity="true">
+    <level value="info" />
+    <appender-ref ref="stdout" />
+    <appender-ref ref="server.rolling.file" />
+  </logger>
+  <logger name="freemarker" additivity="true">
+    <level value="info" />
+    <appender-ref ref="stdout" />
+    <appender-ref ref="server.rolling.file" />
+  </logger>
+  <logger name="catalia" additivity="true">
+    <level value="info" />
+    <appender-ref ref="stdout" />
+    <appender-ref ref="server.rolling.file" />
+  </logger> -->
+     <!-- 下面是打印mybatis语句的配置-->  
+ 	<!-- <logger name="com.ibatis" additivity="true">   
+    	<level value="DEBUG" />   
+ 	</logger>   
+ 	<logger name="java.sql.Connection" additivity="true">   
+    	<level value="DEBUG" />   
+ 	</logger>   
+ 	<logger name="java.sql.Statement" additivity="true">   
+    	<level value="DEBUG" />   
+ 	</logger>   
+ 	<logger name="java.sql.PreparedStatement" additivity="true">   
+    	<level value="DEBUG" />   
+ 	</logger>   
+ 	<logger name="java.sql.ResultSet" additivity="true">   
+    	<level value="DEBUG" />   
+ 	</logger>   --> 
+ 	<!--mybatis视频使用的  -->
+ 	<logger name="java.sql" additivity="true">   
+    	<level value="ALL" />   
+ 	</logger> 
+ 	<logger name="com.ibatis" additivity="true">   
+    	<level value="ALL" />   
+ 	</logger> 
+  <root>
+<!--     <priority value="info" />
+    <appender-ref ref="server.rolling.file" /> -->
+    <priority value="debug" />
+    <appender-ref ref="stdout" />
+  </root>
+</log4j:configuration>

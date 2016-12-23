@@ -3,7 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
  <mapper namespace="cn.hjycjc.spring.spring_mybatis.dao">
  	<select id="getUser" parameterType="java.lang.Integer" resultType="cn.hjycjc.spring.spring_mybatis.entity.User">
- 		SELECT * FROM users WHERE id=#{id}
+ 		SELECT oid id,user_name name, age FROM users WHERE oid=#{id}
  	</select>
  </mapper>
  

@@ -24,7 +24,7 @@ public class TestApp {
 	 */
 	@Test
 	public void test() throws IOException{
-		ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
+//		ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		/*
 		 * 需要改进
@@ -36,7 +36,7 @@ public class TestApp {
 		
 		String statement ="cn.hjycjc.spring.spring_mybatis.dao"+".getUser";
 		
-		int parameter =2;		
+		int parameter =1;		
 		User result=sqlSession.selectOne(statement, parameter);
 		
 		System.out.println(result);
